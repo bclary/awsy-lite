@@ -1,0 +1,20 @@
+{
+    "network.proxy.socks": "localhost",
+    "network.proxy.socks_port": 90000,
+    "network.proxy.socks_remote_dns": true,
+    "network.proxy.type": 1,
+    "startup.homepage_welcome_url": "",
+    "startup.homepage_override_url": "",
+    "browser.newtab.url": "about:blank",
+    "browser.tabs.remote.autostart": false,
+    "browser.tabs.remote.autostart.1": false,
+    "browser.tabs.remote.autostart.2": false,
+    "browser.tabs.remote.autostart.3": false,
+    "browser.tabs.remote.autostart.4": false,
+    "browser.tabs.remote.autostart.5": false,
+    "browser.tabs.remote.autostart.6": false,
+    "dom.ipc.processCount": 0,
+    "browser.displayedE10SNotice": 1000,
+    "plugin.disable": true,
+    "image.mem.surfacecache.min_expiration_ms": 10000
+}

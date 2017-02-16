@@ -1,0 +1,7 @@
+{
+    "resultsDir": "/home/erahm/dev/awsy-lite/example/data/",
+    "entities": 3,
+    "iterations": 5,
+    "perTabPause": 1,
+    "settleWaitTime": 1
+}
