@@ -52,12 +52,21 @@ def create_suite(name, node, data_path):
     for checkpoint in CHECKPOINTS:
         memory_report_path = os.path.join(data_path, checkpoint['path'])
 
-        # Currently limited to just the main process.
-        totals = parse_about_memory.calculate_memory_report_values(
-                                        memory_report_path, node, 'Main')
-        # For e10s we would sum the values, except for rss which we'd want
-        # rss of main + uss of not main.
-        value = totals.values()[0]
+        if node != "resident":
+            totals = parse_about_memory.calculate_memory_report_values(
+                                            memory_report_path, node)
+            value = sum(totals.values())
+        else:
+            # For "resident" we really want RSS of the chrome ("Main") process
+            # and USS of the child processes. We'll still call it resident
+            # for simplicity (it's nice to be able to compare RSS of non-e10s
+            # with RSS + USS of e10s).
+            totals_rss = parse_about_memory.calculate_memory_report_values(
+                                            memory_report_path, node, 'Main')
+            totals_uss = parse_about_memory.calculate_memory_report_values(
+                                            memory_report_path, 'resident-unique')
+            value = totals_rss.values()[0] + \
+                    sum([v for k, v in totals_uss.iteritems() if not 'Main' in k])
 
         subtest = {
             'name': checkpoint['name'],

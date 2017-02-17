@@ -8,7 +8,8 @@ mkdir data
 
 # Note: the example testvars.json just dumps the results in "data/", ideally
 #       this would be an absolute path to a temp dir.
-marionette --disable-e10s --preferences "prefs.json" --testvars "testvars.json" \
+#marionette --disable-e10s --preferences "prefs.json" --testvars "testvars.json" \
+marionette --preferences "prefs.json" --testvars "testvars.json" \
            --binary "firefox/firefox" --gecko-log "data/gecko.log" \
            --log-tbpl=- \
 	         ../awsylite/test_memory_usage.py
